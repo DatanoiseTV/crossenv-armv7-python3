@@ -17,8 +17,8 @@ ENV PYTHON_VERSION=3.5.1
 RUN apt-get update
 RUN apt-get -y install wget build-essential make gawk flex bison tar bzip2 file python3 elfutils libgcc1-armhf-cross libgcc1
 
-ADD ./get_toolchain.sh /get_toolchain.sh
-RUN chmod +x /get_toolchain.sh && /get_toolchain.sh
+RUN wget -O /tmp/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2 https://releases.linaro.org/archive/13.03/components/toolchain/binaries/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
+RUN tar xfvj /tmp/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2 -C /usr/local/
 
 # This is very hacked together, fix me.
 RUN cp -r /usr/local/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux/arm-linux-gnueabihf/libc/lib/* /lib/
